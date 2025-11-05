@@ -1,11 +1,20 @@
-/* Add your CSS to this file */
-body {
-    margin: 0;
-    font-size: 16px;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-.container {
-    margin: 0 auto;
-    max-width: 960px;
-    width: 100%;
-}
+  const form = document.querySelector(".newsletter form");
+  const emailInput = document.getElementById("email");
+  const messageDiv = document.querySelector(".message");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); 
+
+    const email = emailInput.value.trim(); 
+
+    if (email) {
+      messageDiv.textContent = `Thank you! Your email address ${email} has been added to our mailing list!`;
+    } else {
+      messageDiv.textContent = "Please enter a valid email address";
+    }
+
+    emailInput.value = ""; 
+  });
+});
